@@ -1,17 +1,35 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 
-dotenv.config();
+import { AppDataSource } from './models';
+
 
 const app: Express = express();
-const port = process.env.PORT;
+const { SERVER_PORT } = process.env;
 
-app.get('/', (req: Request, res: Response) => {
-	res.status(200).json({
-		message: 'Hello, world!'
-	})
-});
+const initializeExpress = () => {
+	app.get('/', (req: Request, res: Response) => {
+		res.status(200).json({
+			message: 'Hello, world!'
+		});
+	});
+	
+	app.listen(SERVER_PORT, () => {
+		console.log(`Server is running on port ${SERVER_PORT}`);
+	});
+}
 
-app.listen(port, () => {
-	console.log(`Server is running on port ${port}`);
-});
+const initializeDatabase = async () => {
+	await AppDataSource.initialize();
+};
+
+const main = async () => {
+	try {
+		dotenv.config();
+		await initializeDatabase();
+		initializeExpress();
+	} catch (error) {
+		console.error(error);
+	}
+};
+main();
