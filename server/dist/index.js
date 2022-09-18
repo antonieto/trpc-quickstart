@@ -15,14 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const models_1 = require("./models");
-const app = (0, express_1.default)();
+const v1_1 = __importDefault(require("./api/v1"));
 const { SERVER_PORT } = process.env;
 const initializeExpress = () => {
-    app.get('/', (req, res) => {
-        res.status(200).json({
-            message: 'Hello, world!'
-        });
-    });
+    const app = (0, express_1.default)();
+    app.use(express_1.default.json());
+    /**
+     * API v1
+     */
+    app.use('/api/v1', v1_1.default);
     app.listen(SERVER_PORT, () => {
         console.log(`Server is running on port ${SERVER_PORT}`);
     });

@@ -2,17 +2,18 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 
 import { AppDataSource } from './models';
+import v1Router from './api/v1';
 
-
-const app: Express = express();
 const { SERVER_PORT } = process.env;
 
 const initializeExpress = () => {
-	app.get('/', (req: Request, res: Response) => {
-		res.status(200).json({
-			message: 'Hello, world!'
-		});
-	});
+	const app: Express = express();
+	app.use(express.json());
+
+	/**
+	 * API v1
+	 */
+	app.use('/api/v1', v1Router);
 	
 	app.listen(SERVER_PORT, () => {
 		console.log(`Server is running on port ${SERVER_PORT}`);

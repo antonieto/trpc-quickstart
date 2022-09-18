@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { AppDataSource } from '.';
 
 @Entity()
 export class Blog {

@@ -10,7 +10,6 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const blog_1 = require("./blog");
 dotenv_1.default.config();
 const { DB_HOST, DB_PASSWORD, DB_PORT, DB_USERNAME, DB_NAME } = process.env;
-console.log('password', DB_PASSWORD);
 exports.AppDataSource = new typeorm_1.DataSource({
     type: 'postgres',
     host: DB_HOST,
