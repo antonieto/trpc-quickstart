@@ -17,10 +17,5 @@
     "url": "https://github.com/antonieto/trpc-quickstart/issues"
   },
   "homepage": "https://github.com/antonieto/trpc-quickstart#readme",
-  "dependencies": {
-    "@tanstack/react-query": "^4.3.9",
-    "@trpc/client": "^10.0.0-proxy-beta.2",
-    "@trpc/react": "^10.0.0-proxy-beta.2",
-    "@trpc/server": "^10.0.0-proxy-beta.2"
-  }
+  "dependencies": {}
 }

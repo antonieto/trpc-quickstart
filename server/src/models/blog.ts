@@ -23,4 +23,5 @@ export interface Blog {
   id: string;
   body: string;
   createdAt: Date;
+  pene?: string;
 }

@@ -5,7 +5,7 @@ import * as trpcExpress from '@trpc/server/adapters/express';
 import cors from 'cors';
 
 import { AppDataSource } from './models';
-import { v1Router } from './api/v1';
+import { trpcRouter } from './api';
 
 const { SERVER_PORT } = process.env;
 
@@ -14,10 +14,7 @@ const initializeExpress = () => {
 	app.use(express.json());
 	app.use(cors());
 
-	/**
-	 * API v1
-	 */
-	app.use('/api/v1', v1Router);
+	app.use(trpcRouter);
 	
 	app.listen(SERVER_PORT, () => {
 		console.log(`Server is running on port ${SERVER_PORT}`);
