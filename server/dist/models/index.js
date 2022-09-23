@@ -17,7 +17,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     username: DB_USERNAME,
     password: DB_PASSWORD,
     database: DB_NAME,
-    entities: [blog_1.Blog],
+    entities: [blog_1.BlogModel],
     synchronize: true,
     logging: false,
 });

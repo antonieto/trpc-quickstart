@@ -1,9 +1,16 @@
 import { Router } from 'express';
+import * as trpcExpress from '@trpc/server/adapters/express';
+
 import { blogRouter } from './routes/blogRoutes';
 
+export const v1Router = Router();
+const createContext = ({req, res}: trpcExpress.CreateExpressContextOptions) => ({});
 
-const v1Router = Router();
+v1Router.use('/blogs', trpcExpress.createExpressMiddleware({
+  router: blogRouter,
+  createContext,
+}));
 
-v1Router.use(blogRouter);
+type Context = typeof createContext;
 
-export default v1Router;
+export type BlogRouter = typeof blogRouter;

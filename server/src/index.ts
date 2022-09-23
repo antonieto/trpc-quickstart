@@ -1,14 +1,18 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
+import { z } from 'zod';
+import * as trpcExpress from '@trpc/server/adapters/express';
+import cors from 'cors';
 
 import { AppDataSource } from './models';
-import v1Router from './api/v1';
+import { v1Router } from './api/v1';
 
 const { SERVER_PORT } = process.env;
 
 const initializeExpress = () => {
 	const app: Express = express();
 	app.use(express.json());
+	app.use(cors());
 
 	/**
 	 * API v1

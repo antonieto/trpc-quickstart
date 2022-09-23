@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import dotenv from 'dotenv';
-import { Blog } from "./blog";
+import { BlogModel } from "./blog";
 
 dotenv.config();
 
@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_NAME,
-  entities: [Blog],
+  entities: [BlogModel],
   synchronize: true,
   logging: false,
 });

@@ -14,16 +14,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const cors_1 = __importDefault(require("cors"));
 const models_1 = require("./models");
-const v1_1 = __importDefault(require("./api/v1"));
+const v1_1 = require("./api/v1");
 const { SERVER_PORT } = process.env;
 const initializeExpress = () => {
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
+    app.use((0, cors_1.default)());
     /**
      * API v1
      */
-    app.use('/api/v1', v1_1.default);
+    app.use('/api/v1', v1_1.v1Router);
     app.listen(SERVER_PORT, () => {
         console.log(`Server is running on port ${SERVER_PORT}`);
     });

@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeor
 import { AppDataSource } from '.';
 
 @Entity()
-export class Blog {
+export class BlogModel implements Blog {
 
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -15,3 +15,12 @@ export class Blog {
   @CreateDateColumn()
   createdAt: Date;
 };
+
+/**
+ * Interface for Blog in procedures
+ */
+export interface Blog {
+  id: string;
+  body: string;
+  createdAt: Date;
+}

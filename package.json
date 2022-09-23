@@ -1,0 +1,26 @@
+{
+  "name": "trpc-quickstart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonieto/trpc-quickstart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonieto/trpc-quickstart/issues"
+  },
+  "homepage": "https://github.com/antonieto/trpc-quickstart#readme",
+  "dependencies": {
+    "@tanstack/react-query": "^4.3.9",
+    "@trpc/client": "^10.0.0-proxy-beta.2",
+    "@trpc/react": "^10.0.0-proxy-beta.2",
+    "@trpc/server": "^10.0.0-proxy-beta.2"
+  }
+}

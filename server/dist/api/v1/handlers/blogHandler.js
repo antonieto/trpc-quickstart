@@ -9,10 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listBlogs = exports.createBlog = void 0;
+exports.listBlogsProcedure = exports.createBlogProcedure = exports.createBlog = void 0;
+const zod_1 = require("zod");
 const models_1 = require("../../../models");
 const blog_1 = require("../../../models/blog");
-const blogRepository = models_1.AppDataSource.getRepository(blog_1.Blog);
+const blogRepository = models_1.AppDataSource.getRepository(blog_1.BlogModel);
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req.body;
     const createdBlog = yield blogRepository.save({
@@ -21,8 +22,16 @@ const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     return res.status(200).json(createdBlog);
 });
 exports.createBlog = createBlog;
-const listBlogs = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const blogs = yield blogRepository.find();
-    return res.status(200).json(blogs);
+exports.createBlogProcedure = {
+    input: zod_1.z.object({ body: zod_1.z.string() }),
+    resolve(req) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { body } = req.input;
+            return yield blogRepository.save({ body });
+        });
+    }
+};
+const listBlogsProcedure = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    return blogRepository.find();
 });
-exports.listBlogs = listBlogs;
+exports.listBlogsProcedure = listBlogsProcedure;

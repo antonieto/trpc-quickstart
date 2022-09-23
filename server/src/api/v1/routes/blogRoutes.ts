@@ -1,9 +1,14 @@
 import { Router } from 'express';
+import z from 'zod';
+import { initTRPC } from '@trpc/server';
 
-import { listBlogs, createBlog } from '../handlers/blogHandler';
+import { listBlogsProcedure, createBlogProcedure } from '../handlers/blogHandler';
 
-export const blogRouter = Router({mergeParams: true});
+const t = initTRPC.create();
 
-blogRouter.route('/blogs')
-  .get(listBlogs)
-  .post(createBlog);
+export const blogRouter = t.router({
+  listBlogs: t.procedure.query(listBlogsProcedure)
+});
+
+
+export type BlogRouter = typeof blogRouter;

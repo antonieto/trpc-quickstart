@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
+import { z } from "zod";
 import { AppDataSource } from "../../../models";
 
-import { Blog } from "../../../models/blog";
+import { BlogModel, Blog } from "../../../models/blog";
 
-const blogRepository = AppDataSource.getRepository(Blog);
+const blogRepository = AppDataSource.getRepository(BlogModel);
 
 export const createBlog = async (req: Request, res: Response) => {
   
@@ -16,9 +17,15 @@ export const createBlog = async (req: Request, res: Response) => {
   return res.status(200).json(createdBlog);
 };
 
-export const listBlogs = async (req: Request, res: Response) => {
 
-  const blogs = await blogRepository.find();
+export const createBlogProcedure = {
+  input: z.object({ body: z.string() }),
+  async resolve(req: any) {
+    const { body } = req.input;
+    return await blogRepository.save({ body });
+  }
+}
 
-  return res.status(200).json(blogs);
-};
+export const listBlogsProcedure = async (req: any) => {
+  return blogRepository.find();
+}

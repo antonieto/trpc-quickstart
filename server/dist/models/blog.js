@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Blog = void 0;
+exports.BlogModel = void 0;
 const typeorm_1 = require("typeorm");
-let Blog = class Blog {
+let BlogModel = class BlogModel {
     constructor() {
         this.body = '';
     }
@@ -19,19 +19,19 @@ let Blog = class Blog {
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
     __metadata("design:type", String)
-], Blog.prototype, "id", void 0);
+], BlogModel.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         length: 250
     }),
     __metadata("design:type", String)
-], Blog.prototype, "body", void 0);
+], BlogModel.prototype, "body", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], Blog.prototype, "createdAt", void 0);
-Blog = __decorate([
+], BlogModel.prototype, "createdAt", void 0);
+BlogModel = __decorate([
     (0, typeorm_1.Entity)()
-], Blog);
-exports.Blog = Blog;
+], BlogModel);
+exports.BlogModel = BlogModel;
 ;
