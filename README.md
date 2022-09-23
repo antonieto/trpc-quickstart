@@ -1,7 +1,7 @@
 # Just another blogs application
 
 ## Why tRPC?
-tRPC, a TypeScript implementation of RPC (Remote Procedure Call) is a protocol for running remote TypeScript code, through HTTP. Unlike GraphQL, tRPC is NOT a schema, it does not define communication types, 
+tRPC, a TypeScript implementation of RPC (Remote Procedure Call) is a protocol for running remote TypeScript code, through HTTP. Unlike GraphQL, tRPC is NOT a schema, it does not define communication types. tRPC provides an API to create statically typed APIs, and share those types between the client and the server.
 
 ## Setup
 
