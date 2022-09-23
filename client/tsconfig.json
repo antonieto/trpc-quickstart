@@ -17,8 +17,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@api/*": ["../../server/api/*"],
-      "@server/*": ["../../server/*"],
+      "@api/*": ["../server/src/api/*"],
+      "@server/*": ["../server/*"],
     }
   },
   "include": ["src"],

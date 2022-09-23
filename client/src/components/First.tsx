@@ -1,10 +1,8 @@
-import { blogsTrpc } from "../api/blogs";
-
-import React from 'react'
+import { appTrpc } from "../api/trpc";
 
 const First = () => {
 
-  const blogs = blogsTrpc.listBlogs.useQuery();
+  const blogs = appTrpc.blogs.listBlogs.useQuery();
 
   if (!blogs.data) return <div> Loading... </div>;
 
